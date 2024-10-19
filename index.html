@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<title>BMI Calculator</title>
+
+
+
+	<style>
+
+		body {
+
+			margin-top: 100px;
+
+		}
+
+		input, button {
+
+			padding: 15px 25px;
+
+			margin-top:10px;
+
+			border: 0.5px solid #000000;
+
+			border-radius: 10px;
+
+		}
+
+	</style>
+
+	</head>
+
+	<body align="center">
+
+
+		<form>
+
+			<input type="text" id="w1" placeholder="Your weight in KG"> <br><br>
+
+			<input type="text" id="h1" placeholder="Your height in CM"> <br><br>
+
+			<button id="submit" onclick='calculation()'>Calculate</button>
+
+		</form>
+
+
+		<script>
+
+
+				// The main function where everything is calculated and printed in the output
+
+			function calculation() {
+
+				var w=document.getElementById('w1').value; //weight stored in variable w
+
+				var h2=document.getElementById('h1').value; //height stored in vaiabler h2
+
+				var h3=h2/100; //h2 converted to meter unit, result stored in vairable h3
+
+				var h=h3*h3; //square of h3 is stored in variable h, h is ready to be used in calculation
+
+				var BMI=w/h; //BMI formula
+
+				document.write("<br>Your BMI is "); //text 
+
+				document.write(BMI.toFixed(2)); //calculated BMI, 2 decimal value after . will be printed for toFIxed(2) 
+
+
+			
+
+			
+
+				// status
+
+        document.write("<br><br> BMI Status: "); //text
+
+        
+
+        if (BMI<16) {
+
+            document.write("Underweight (Severe thinness)"); //Underweight (Severe thinness)
+
+        }
+
+        else if (BMI>=16 && BMI<=16.9) {
+
+            document.write("Underweight (Moderate thinness)"); //Underweight (Moderate thinness)
+
+        }
+
+        else if (BMI>=17 && BMI<=18.4) {
+
+            document.write("Underweight (Mild thinness)"); //Underweight (Mild thinness)
+
+        }
+
+        else if (BMI>=18.5 && BMI<=24.9) {
+
+            document.write("Normal"); //Normal
+
+        }
+
+        else if (BMI>=25 && BMI<=29.9) {
+
+            document.write("Overweight (Pre-obese)"); //Overweight (Pre-obese)
+
+        }
+
+        else if (BMI>=30 && BMI<=34.9) {
+
+            document.write("Obese (Class I)"); //Obese (Class I)
+
+        }
+
+        else if (BMI>=35 && BMI<=39.9) {
+
+            document.write("Obese (Class II)"); //Obese (Class II)
+
+        }
+
+        else if (BMI>=40) {
+
+            document.write("Obese (Class III)"); //Obese (Class III)
+
+        }
+
+        else {
+
+            document.write("Error!!"); //an error message for any unusual value
+
+        }
+
+
+
+
+		//Normal bmi range
+
+	document.write("<br><br> Normal BMI Range: 18.5 to 24.9");
+
+
+
+		// Ideal Weight
+
+        document.write("<br><br> Ideal Weight Range For You: "); //text
+
+		var wfrom=18.5*h; //lower limit of ideal weight
+
+		var wto=24.9*h; //upper limit of ideal weight
+
+        document.write(wfrom.toFixed(2)); 
+
+		document.write("kg to "); //text
+
+		document.write(wto.toFixed(2)); 
+
+		document.write("kg");
+
+
+
+
+
+		// in case of underweight and overweight
+
+		document.write("<br><br> Further Steps: ");
+
+		if (BMI<18.5) {
+
+			var gain=wfrom-w; //underweight
+
+			document.write("Gain ");
+
+			document.write(gain.toFixed(2));
+
+			document.write("kg to reach ");
+
+			document.write(wfrom.toFixed(2));
+
+			document.write("kg");
+
+		}
+
+		else if (BMI>24.9) {
+
+			var lose=w-wto; //overweight
+
+			document.write("Lose ");
+
+			document.write(lose.toFixed(2));
+
+			document.write("kg to reach ");
+
+			document.write(wto.toFixed(2));
+
+			document.write("kg");
+
+		}
+
+		else if (BMI>=18.5 && BMI<=24.9) {
+
+			document.write("No action needed! Your BMI is in normal range."); //normal
+
+		}
+
+		else {
+
+			document.write("Error!!");
+
+		}
+
+			document.write("<br><br><b><i>[Refresh the page to calculate again]</i></b>");
+
+			}
+
+		</script>
+
+	</body>
+<!-- CODED BY MD> AMANAT ALAM -->
+</html>

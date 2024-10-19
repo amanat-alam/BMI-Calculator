@@ -29,11 +29,23 @@
 
 		}
 
+
+		input, button {
+			padding: 10px;
+			width: 100px;
+			margin:10px;
+			border: 0.5px solid #000000;
+			border-radius: 8px;
+		}
+
 	</style>
 
 	</head>
 
 	<body align="center">
+
+
+		<h1>BMI Calculator</h1>
 
 
 		<form>
@@ -46,8 +58,29 @@
 
 		</form>
 
+		<br>
+
+		<h3>Don't know your height in CM? Convert here -</h3>
+
+   		<form>
+		<input type="text" id="ft" placeholder="feet"> 
+		<input type="text" id="in" placeholder="inch"> <br>
+		<button onclick="convertion()"> Convert </button>
+		</form>
+
+
 
 		<script>
+
+
+
+			function convertion() {
+			var h1=document.getElementById('ft').value;
+			var h2=document.getElementById('in').value;
+			var h4=parseInt(h1*12)+parseInt(h2);
+			var H=h4*2.54;
+			document.write("Your height in CM: ");
+			document.write(H);
 
 
 				// The main function where everything is calculated and printed in the output

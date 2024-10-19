@@ -1,45 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple calculator to calculate BMI and get suggestions for a healthier lifestyle.">
+    <meta name="keywords" content="BMI, Body Mass Index, Health, Calculator, Fitness">
+    <meta name="author" content="Amanat Alam">
+    <meta property="og:title" content="BMI Calculator - Calculate Your Body Mass Index">
+    <meta property="og:description" content="A simple calculator to calculate BMI and get suggestions for a healthier lifestyle.">
+    <meta property="og:image" content="icon.png">
+    <meta property="og:url" content="https://github.com/amanat-alam/BMI-Calculator">
+    <meta name="twitter:card" content="summary_large_image">
     <title>BMI Calculator</title>
     <link rel="icon" href="icon.png">
     <style>
         body {
-            margin-top: 100px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1e1e1e; /* Dark background */
+            color: #d4d4d4; /* Light text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background: #2d2d2d; /* Slightly lighter dark background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #569cd6; /* Light blue color */
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #569cd6;
+            margin-bottom: 20px;
         }
         input, button {
             padding: 15px 25px;
-            margin-top:10px;
-            border: 0.5px solid #000000;
-            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #d4d4d4;
+            border-radius: 5px;
+            width: calc(100% - 52px);
+            box-sizing: border-box;
+            background-color: #3c3c3c;
+            color: #d4d4d4;
+            outline: none;
         }
-        #tag {
-            position: absolute;
-            bottom: 0;
-            text-align: right;
+        input::placeholder {
+            color: #a0a0a0; /* Darker placeholder color */
+        }
+        button {
+            background: #007acc; /* Blue button */
+            color: #ffffff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #005a9e;
         }
         .output-section {
             margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #d4d4d4;
+            border-radius: 5px;
+            background: #3c3c3c;
+        }
+        #tag {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #a0a0a0;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+                height: auto;
+            }
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
-<body align="center">
-    <h1>BMI Calculator</h1>
-    <form onsubmit="event.preventDefault(); calculation();">
-        <input type="text" id="w1" placeholder="Your weight in KG"> <br><br>
-        <input type="text" id="h1" placeholder="Your height in CM"> <br><br>
-        <button type="submit">Calculate</button>
-    </form>
-    <br><br>
-    <h3>Don't know your height in CM? Convert here -</h3>
-    <form onsubmit="event.preventDefault(); convertion();">
-        <input type="text" id="ft" placeholder="feet"> 
-        <input type="text" id="in" placeholder="inch"> <br>
-        <button type="submit">Convert</button>
-    </form>
-    <div id="height-output" class="output-section"></div>
-    <div id="bmi-output" class="output-section"></div>
-    <h6 id="tag">Created by Amanat</h6>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <form id="bmiForm" onsubmit="event.preventDefault(); calculation();">
+            <input type="text" id="w1" placeholder="Your weight in KG"> <br><br>
+            <input type="text" id="h1" placeholder="Your height in CM"> <br><br>
+            <button type="submit">Calculate</button>
+            <div id="bmi-output" class="output-section"></div>
+        </form>
+        <br>
+        <h3>Don't know your height in CM? Convert here -</h3>
+        <form onsubmit="event.preventDefault(); convertion();">
+            <input type="text" id="ft" placeholder="feet"> 
+            <input type="text" id="in" placeholder="inch"> <br>
+            <button type="submit">Convert</button>
+            <div id="height-output" class="output-section"></div>
+        </form>
+        <h6 id="tag">Created by Amanat</h6>
+    </div>
     <script>
         function convertion() {
             var h1 = document.getElementById('ft').value;
@@ -48,13 +117,16 @@
             var H = h4 * 2.54;
             document.getElementById('height-output').innerText = "Your height in CM: " + H;
         }
+
         function calculation() {
             var w = document.getElementById('w1').value; //weight stored in variable w
             var h2 = document.getElementById('h1').value; //height stored in vaiabler h2
             var h3 = h2 / 100; //h2 converted to meter unit, result stored in vairable h3
             var h = h3 * h3; //square of h3 is stored in variable h, h is ready to be used in calculation
             var BMI = w / h; //BMI formula
+
             var bmiOutput = "<br>Your BMI is " + BMI.toFixed(2); //calculated BMI
+
             // status
             bmiOutput += "<br><br> BMI Status: ";
             if (BMI < 16) bmiOutput += "Underweight (Severe thinness)";
@@ -66,13 +138,16 @@
             else if (BMI >= 35 && BMI <= 39.9) bmiOutput += "Obese (Class II)";
             else if (BMI >= 40) bmiOutput += "Obese (Class III)";
             else bmiOutput += "Error!!";
+
             // Normal bmi range
             bmiOutput += "<br><br> Normal BMI Range: 18.5 to 24.9";
+
             // Ideal Weight
             bmiOutput += "<br><br> Ideal Weight Range For You: ";
             var wfrom = 18.5 * h; //lower limit of ideal weight
             var wto = 24.9 * h; //upper limit of ideal weight
             bmiOutput += wfrom.toFixed(2) + "kg to " + wto.toFixed(2) + "kg";
+
             // in case of underweight and overweight
             bmiOutput += "<br><br> Further Steps: ";
             if (BMI < 18.5) {
@@ -86,8 +161,14 @@
             } else {
                 bmiOutput += "Error!!";
             }
-            bmiOutput += "<br><br><b><i>[Refresh the page to calculate again]</i></b>";
+
+            bmiOutput += "<br><br><button onclick='resetForm();'>Calculate Again</button>";
             document.getElementById('bmi-output').innerHTML = bmiOutput;
+        }
+
+        function resetForm() {
+            document.getElementById('bmiForm').reset();
+            document.getElementById('bmi-output').innerHTML = "";
         }
     </script>
 </body>

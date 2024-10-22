@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta and other head content (same as before) -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A simple calculator to calculate BMI and get suggestions for a healthier lifestyle. Calculate your Body Mass Index and get personalized health tips. Easily track your BMI with just one click and see the results in seconds.">
@@ -17,7 +18,6 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://github.com/amanat-alam/BMI-Calculator/blob/main/icon.png">
     <meta name="twitter:image:alt" content="BMI Calculator Icon">
-    <!-- Additional Meta Tags -->
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#007acc">
     <meta name="application-name" content="BMI Calculator">
@@ -129,24 +129,31 @@
 <body>
     <div class="container">
         <h1>BMI Calculator</h1>
-        <form id="bmiForm" onsubmit="event.preventDefault(); calculation();">
+
+        <!-- BMI Calculation Form -->
+        <form id="bmiForm" action="#" onsubmit="event.preventDefault(); calculation();">
             <input type="text" id="w1" placeholder="Your weight in KG"> <br><br>
             <input type="text" id="h1" placeholder="Your height in CM"> <br><br>
             <button type="submit">Calculate</button>
             <div id="bmi-output" class="output-section"></div>
         </form>
+        
         <br>
         <h3>Don't know your height in CM? Convert here</h3>
-        <form onsubmit="event.preventDefault(); convertion();">
+
+        <!-- Height Conversion Form -->
+        <form action="#" onsubmit="event.preventDefault(); convertion();">
             <input type="text" id="ft" placeholder="feet"> 
-            <input type="text" id="in" placeholder="inch"> <br>
+            <input type="text" id="in" placeholder="inch"> <br><br>
             <button type="submit">Convert</button>
             <div id="height-output" class="output-section"></div>
         </form>
         
+        <!-- Additional Content -->
         <h2>How Your BMI is Calculated</h2>
         <p>Your Body Mass Index (BMI) is calculated using a simple formula that takes into account your weight and height. The formula is BMI = kg/m², where kg is your weight in kilograms and m² is your height in meters squared. This calculation provides a numerical value that can be used to categorize your weight status and assess potential health risks.</p>
-        
+
+        <!-- Health Tips Section -->
         <h2>Health Tips According to BMI Range</h2>
         <p>Here are some health tips based on your BMI range:</p>
         <ul>
@@ -155,78 +162,14 @@
             <li><strong>Overweight (BMI 25 - 29.9):</strong> Aim to lose weight through a combination of healthy eating and increased physical activity. Focus on portion control, reducing sugar and fat intake, and incorporating more fruits and vegetables into your diet.</li>
             <li><strong>Obese (BMI ≥ 30):</strong> Work towards significant weight loss to reduce health risks. Seek guidance from a healthcare provider or a dietitian to create a sustainable weight loss plan. Incorporate regular exercise and make long-term dietary changes.</li>
         </ul>
-        
+
+        <!-- BMI Understanding Section -->
         <h2>Understanding BMI</h2>
         <p>The Body Mass Index (BMI) is a simple calculation using a person's height and weight. The formula is BMI = kg/m² where kg is a person's weight in kilograms and m² is their height in meters squared. A BMI of 25.0 or more is overweight, while the healthy range is 18.5 to 24.9. BMI applies to most adults 18-65 years.</p>
-        <p>It was devised by Adolphe Quetelet during the 19th century as a simple means of classifying individuals according to their body size. It is a useful tool for identifying weight problems in adults but is not a diagnostic tool for any specific health condition. Use it as a guide to see if you are underweight, normal weight, overweight, or obese.</p>
-        <p>While BMI is a useful measure of overweight and obesity, it is not the only measure. Other factors, such as muscle mass, bone density, and overall body composition, can affect the relationship between BMI and body fat. Therefore, it is important to complement BMI with other assessments for a more comprehensive view of an individual's health.</p>
-        <p>Some limitations of BMI include its inability to differentiate between muscle and fat, its potentially misleading results in certain people, such as athletes, and its inability to account for the distribution of fat in the body. Despite these limitations, BMI remains a widely used and valuable tool for assessing weight status and potential health risks.</p>
-        <p>Maintaining a healthy weight is important for overall health and can help prevent and control many diseases and conditions. If you are concerned about your weight or BMI, it is important to talk to your healthcare provider. They can help you understand your BMI and what it means for your health, as well as provide personalized advice and support for achieving and maintaining a healthy weight.</p>
-        <p>Achieving and maintaining a healthy weight can be a challenge, but it is possible with the right tools and support. Use this BMI calculator as a starting point to understand your current weight status and explore the resources available to help you reach your health and fitness goals. Remember, small changes can make a big difference over time.</p>
 
         <h6 id="tag">Created by Amanat Alam</h6>
     </div>
-    <script>
-        function convertion() {
-            var h1 = document.getElementById('ft').value;
-            var h2 = document.getElementById('in').value;
-            var h4 = parseInt(h1 * 12) + parseInt(h2);
-            var H = h4 * 2.54;
-            document.getElementById('height-output').innerText = "Your height in CM: " + H;
-        }
 
-        function calculation() {
-            var w = document.getElementById('w1').value; //weight stored in variable w
-            var h2 = document.getElementById('h1').value; //height stored in vaiabler h2
-            var h3 = h2 / 100; //h2 converted to meter unit, result stored in vairable h3
-            var h = h3 * h3; //square of h3 is stored in variable h, h is ready to be used in calculation
-            var BMI = w / h; //BMI formula
-
-            var bmiOutput = "<br>Your BMI is " + BMI.toFixed(2); //calculated BMI
-
-            // status
-            bmiOutput += "<br><br> BMI Status: ";
-            if (BMI < 16) bmiOutput += "Underweight (Severe thinness)";
-            else if (BMI >= 16 && BMI <= 16.9) bmiOutput += "Underweight (Moderate thinness)";
-            else if (BMI >= 17 && BMI <= 18.4) bmiOutput += "Underweight (Mild thinness)";
-            else if (BMI >= 18.5 && BMI <= 24.9) bmiOutput += "Normal";
-            else if (BMI >= 25 && BMI <= 29.9) bmiOutput += "Overweight (Pre-obese)";
-            else if (BMI >= 30 && BMI <= 34.9) bmiOutput += "Obese (Class I)";
-            else if (BMI >= 35 && BMI <= 39.9) bmiOutput += "Obese (Class II)";
-            else if (BMI >= 40) bmiOutput += "Obese (Class III)";
-            else bmiOutput += "Error!!";
-
-            // Normal bmi range
-            bmiOutput += "<br><br> Normal BMI Range: 18.5 to 24.9";
-
-            // Ideal Weight
-            bmiOutput += "<br><br> Ideal Weight Range For You: ";
-            var wfrom = 18.5 * h; //lower limit of ideal weight
-            var wto = 24.9 * h; //upper limit of ideal weight
-            bmiOutput += wfrom.toFixed(2) + "kg to " + wto.toFixed(2) + "kg";
-
-            // in case of underweight and overweight
-            bmiOutput += "<br><br> Further Steps: ";
-            if (BMI < 18.5) {
-                var gain = wfrom - w; //underweight
-                bmiOutput += "Gain " + gain.toFixed(2) + "kg to reach " + wfrom.toFixed(2) + "kg";
-            } else if (BMI > 24.9) {
-                var lose = w - wto; //overweight
-                bmiOutput += "Lose " + lose.toFixed(2) + "kg to reach " + wto.toFixed(2) + "kg";
-            } else if (BMI >= 18.5 && BMI <= 24.9) {
-                bmiOutput += "No action needed! Your BMI is in normal range.";
-            } else {
-                bmiOutput += "Error!!";
-            }
-
-            bmiOutput += "<br><br><button onclick='resetForm();'>Calculate Again</button>";
-            document.getElementById('bmi-output').innerHTML = bmiOutput;
-        }
-
-        function resetForm() {
-            document.getElementById('bmiForm').reset();
-            document.getElementById('bmi-output').innerHTML = "";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

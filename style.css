@@ -1,0 +1,156 @@
+body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f5f5;
+        color: #333333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        flex-direction: column;
+    }
+    .container {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        margin-top: 5vh;
+    }
+    h1, h2, h3 {
+        color: #0056b3;
+        margin-bottom: 20px;
+    }
+    input, button {
+        padding: 15px 25px;
+        margin-top: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        width: calc(100% - 52px);
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        color: #333333;
+        outline: none;
+    }
+    input::placeholder {
+        color: #999999;
+    }
+    button {
+        background: #007acc;
+        color: #ffffff;
+        cursor: pointer;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+        background: #005a9e;
+        box-shadow: 0px 4px 12px rgba(0, 90, 158, 0.2);
+    }
+    .output-section {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        background: #f9f9f9;
+        display: none;
+    }
+
+    #tag {
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #666666;
+    }
+    
+    .bmi-meter-container {
+    position: relative;
+    width: 100%; /* Full width */
+    height: 300px; /* Adjust height as needed for the vertical layout */
+    margin: 20px 0; /* Space around the meter */
+    border: 1px solid #ccc; /* Optional: border around the container */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow for better presentation */
+}
+
+.bmi-meter {
+    display: flex;
+    flex-direction: column; /* Set direction to column for vertical layout */
+    height: 100%; /* Full height for the container */
+    background-color: #e0e0e0; /* Background for the meter */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden;
+}
+
+.bmi-range {
+    flex: 1; /* Equal height for all ranges */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: light;
+    padding: 5px; /* Optional padding for better text spacing */
+}
+
+/* Deeper colors with contrasting text */
+.severe-thinness {
+    background-color: rgba(241, 196, 15, 0.8); /* Deeper yellow for severe thinness */
+    color: black; /* White text for better visibility */
+}
+
+.moderate-thinness {
+    background-color: rgba(243, 156, 18, 0.8); /* Deeper orange for moderate thinness */
+    color: black; /* White text for better visibility */
+}
+
+.mild-thinness {
+    background-color: rgba(243, 156, 18, 0.8); /* Deeper orange for mild thinness */
+    color: black; /* White text for better visibility */
+}
+
+.normal {
+    background-color: rgba(46, 204, 113, 0.9); /* Deeper green for normal */
+    color: black; /* White text for better visibility */
+}
+
+.overweight {
+    background-color: rgba(231, 126, 34, 0.8); /* Deeper orange for overweight */
+    color: black; /* White text for better visibility */
+}
+
+.class-i {
+    background-color: rgba(231, 76, 60, 0.8); /* Deeper red for obese (Class I) */
+    color: black; /* White text for better visibility */
+}
+
+.class-ii {
+    background-color: rgba(192, 57, 43, 0.8); /* Deeper dark red for obese (Class II) */
+    color: black; /* White text for better visibility */
+}
+
+.class-iii {
+    background-color: rgba(169, 40, 38, 0.8); /* Deeper even darker red for obese (Class III) */
+    color: black; /* White text for better visibility */
+}
+
+.user-bmi {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 1; /* Full opacity for emphasis */
+    color: #000; /* Black text for better visibility */
+    transform: scale(1.1); /* Slightly larger */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
+
+
+    @media (max-width: 600px) {
+        body {
+            padding: 20px;
+            height: auto;
+        }
+        .container {
+            width: 90%;
+            padding: 20px;
+            margin-top: 2vh;
+        }
+    }

@@ -124,5 +124,8 @@ function updateBMIMeter(BMI) {
         function resetForm() {
             document.getElementById('bmiForm').reset();
             document.getElementById('bmi-output').innerHTML = "";
-            window.scrollTo(0, 0);
+            window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // This enables smooth scrolling
+            });
         }

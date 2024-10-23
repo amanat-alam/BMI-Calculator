@@ -122,5 +122,7 @@ function updateBMIMeter(BMI) {
 
 
         function resetForm() {
-            window.location.reload();
+            document.getElementById('bmiForm').reset();
+            document.getElementById('bmi-output').innerHTML = "";
+            window.scrollTo(0, 0);
         }
